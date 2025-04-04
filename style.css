@@ -1,0 +1,106 @@
+
+.card-para-font{
+font-size: 1rem;
+}
+
+  .read-more-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #212529;
+    transition: all 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .read-more-link i {
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .read-more-link:hover {
+    color: #000;
+  }
+
+  .read-more-link:hover i {
+    transform: translateX(4px);
+  }
+
+  /* Minimalist Full-Screen Modal Styling */
+  .modal-content {
+    background-color: #f8f9fa;
+    color: #212529;
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  /* Centered but Left-Aligned Content */
+  .content-box {
+    max-width: 750px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .modal-body h2 {
+    font-weight: bold;
+  }
+
+  .modal-body p, .modal-body ul {
+    max-width: 700px;
+  }
+
+  .modal-header .btn-close {
+    font-size: 1.5rem;
+    opacity: 0.7;
+  }
+
+  .read-more-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #212529;
+    transition: all 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .read-more-link i {
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .read-more-link:hover {
+    color: #000;
+  }
+
+  .read-more-link:hover i {
+    transform: translateX(4px);
+  }
+
+  /* Minimalist Full-Screen Modal Styling */
+  .modal-content {
+    background-color: #f8f9fa;
+    color: #212529;
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  /* Centered but Left-Aligned Content */
+  .content-box {
+    max-width: 750px;
+    width: 100%;
+    text-align: left;
+  }
+
+ 
+
+  .modal-body h2 {
+    font-weight: bold;
+  }
+
+  .modal-body p, .modal-body ul {
+    max-width: 700px;
+  }
+
+  .modal-header .btn-close {
+    font-size: 1.5rem;
+    opacity: 0.7;
+  }
