@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Cross-Platform Mobile Engineer — Holistics</title>
+    <meta name="description" content="We're hiring a freelance contributor to build a cross-platform mobile app — milestone-based, founder-direct, long-term potential.">
+    <meta name="author" content="Holistics">
+
+    <meta property="og:title" content="Freelance Cross-Platform Mobile Engineer — Holistics">
+    <meta property="og:description" content="Help us bring an early-stage product to life. End-to-end mobile build, cross-platform, milestone-based. Founder-direct, long-term potential.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.5;
+            color: #0f172a;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-bg {
+            background-color: #ffd100;
+            color: #0f172a;
+        }
+
+        .section-dark {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Header */
+        .header {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: inherit;
+            padding: 0.5rem 0;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #ffd100;
+        }
+
+        .menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0;
+        }
+
+        .hero .eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            line-height: 1.2;
+            max-width: 56rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            opacity: 0.85;
+            max-width: 48rem;
+        }
+
+        .meta-row {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        .meta-row .meta-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            opacity: 0.6;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Body */
+        .role-body {
+            padding: 4rem 0;
+        }
+
+        .role-body .content {
+            max-width: 48rem;
+        }
+
+        .role-body h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-body h2:first-child {
+            margin-top: 0;
+        }
+
+        .role-body h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-body p {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .role-body ul {
+            margin: 1rem 0 1.25rem 1.25rem;
+        }
+
+        .role-body li {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .role-body strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        /* Apply CTA */
+        .apply-cta {
+            padding: 4rem 0;
+        }
+
+        .apply-cta .content {
+            max-width: 48rem;
+        }
+
+        .apply-cta h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .apply-cta p {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .apply-cta ul {
+            margin: 1rem 0 1.5rem 1.25rem;
+        }
+
+        .apply-cta li {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .apply-cta a.email-link {
+            color: #ffd100;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .apply-cta a.email-link:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 0 2rem;
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 200;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #0f172a;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="/">Holistics</a></div>
+            <nav class="nav">
+                <a href="/#what-we-do">What we do</a>
+                <a href="/#how-we-work">How we work</a>
+                <a href="/#whats-new">What's new</a>
+                <a href="/careers/">Careers</a>
+            </nav>
+            <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo"><a href="/">Holistics</a></div>
+            <button class="menu-btn" onclick="toggleMobileMenu()">✕</button>
+        </div>
+        <nav>
+            <a href="/#what-we-do" onclick="toggleMobileMenu()">What we do</a>
+            <a href="/#how-we-work" onclick="toggleMobileMenu()">How we work</a>
+            <a href="/#whats-new" onclick="toggleMobileMenu()">What's new</a>
+            <a href="/careers/" onclick="toggleMobileMenu()">Careers</a>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero hero-bg">
+        <div class="container">
+            <div class="eyebrow">Careers · Freelance contract</div>
+            <h1>Freelance Contributor — Cross-Platform Mobile Build</h1>
+            <p class="hero-subtitle">We're an early-stage, pre-funding startup, looking for a freelance contributor to help us bring a product to life. We're actively reviewing applications and hoping to start with the right person soon.</p>
+            <div class="meta-row">
+                <div>
+                    <span class="meta-label">Engagement</span>
+                    Milestone-based contract
+                </div>
+                <div>
+                    <span class="meta-label">Location</span>
+                    Remote
+                </div>
+                <div>
+                    <span class="meta-label">Stage</span>
+                    Pre-funding · Stealth
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role body -->
+    <section class="role-body">
+        <div class="container">
+            <div class="content">
+                <h2>The work</h2>
+                <p>You'd be the person making the thing real — turning a well-considered set of designs and decisions into a cross-platform app that runs on iPhone and Android. Mobile-focused, but genuinely end-to-end: front-end UI, backend data and logic, the architecture decisions that hold them together, and the pipeline that gets it onto people's phones.</p>
+                <p>The product is in stealth for now, so there's only so much we can share publicly. Happy to walk through it properly under NDA.</p>
+
+                <h2>Who we're looking for</h2>
+                <p>You're experienced with modern cross-platform frameworks — Flutter, React Native, and similar — and comfortable working across them. Real mobile products often need more than one stack as they grow, and we want someone who can move with that.</p>
+                <p>What matters most is that you've shipped real apps to both the App Store and Google Play, and made them feel native on each.</p>
+
+                <h3>Across the stack you should be comfortable with:</h3>
+                <ul>
+                    <li><strong>Mobile UI.</strong> Declarative component patterns, design-system implementation (tokens, not hardcoded values), animations and gesture handling, form and validation flows, native module bridges when something needs them.</li>
+                    <li><strong>Backend.</strong> Document-style databases, serverless functions, file storage, authentication including OAuth providers (Apple, Google), and the security and permissions layer that sits over all of it.</li>
+                    <li><strong>Privacy and data protection.</strong> Thoughtful about what data is collected, where it lives, who can access it, and how it's removed when asked. Especially when the product touches sensitive territory.</li>
+                    <li><strong>Architecture.</strong> State management choices, navigation, deep linking, offline-and-sync thinking, performance budgeting, schema migration patterns. Knowing when to reach for realtime listeners and when one-shot reads will do — those decisions matter at scale.</li>
+                    <li><strong>Testing — manual and automated.</strong> Unit tests for logic, integration tests for components, end-to-end tests for the critical paths, and disciplined cross-device QA on real hardware. With AI tools accelerating code output, we lean harder on testing, not less.</li>
+                    <li><strong>Shipping.</strong> Cloud build pipelines, TestFlight + Play Console Internal submissions, release management, crash reporting, sensible analytics wiring. Familiar with App Store and Play Store policies, age ratings, and the privacy declarations both stores now require.</li>
+                    <li><strong>Debugging instincts.</strong> Across native logs, network traces, store rejection reasons, push delivery failures, OAuth weirdness — the messy real-world stuff.</li>
+                </ul>
+
+                <h3>We particularly value:</h3>
+                <ul>
+                    <li><strong>Cross-platform parity discipline.</strong> Every feature lands on iOS and Android together. No "iOS first, Android later".</li>
+                    <li><strong>An accessibility instinct.</strong> Readable type, proper hit targets, dynamic type support, screen-reader friendly. The people who'll use this product depend on it.</li>
+                    <li><strong>A feel for warm, plain-English UI.</strong> Copy that sounds like a person, not a system.</li>
+                    <li><strong>Strong written-spec literacy.</strong> You can read a thoughtful brief and run with it without needing every step laid out.</li>
+                    <li><strong>A critical eye for AI output.</strong> You use LLMs as tools, not as authority. You can spot a hallucinated API or a deprecated pattern, and you test what comes out before it ships.</li>
+                    <li><strong>Honest estimation.</strong> You break work into milestones you can stand behind, and you flag risks early rather than at the deadline.</li>
+                    <li><strong>Clear async communication.</strong> Much of our work happens in writing — you ask the right questions, surface decisions cleanly, and don't disappear between updates.</li>
+                </ul>
+
+                <h2>Nice to have</h2>
+                <ul>
+                    <li>Experience in sensitive domains (healthcare, eldercare, accessibility-led products)</li>
+                    <li>Wearable integrations (Apple HealthKit, Google Health Connect, Oura, Garmin)</li>
+                    <li>A portfolio that shows you care about how things feel, not just whether they work</li>
+                </ul>
+
+                <h2>How this works</h2>
+                <ul>
+                    <li><strong>Milestone-based.</strong> We agree milestones together, and we pay against them. Your hours and rhythm are yours to set within each milestone — what matters is what ships.</li>
+                    <li><strong>Direct.</strong> You work with the founder. Decisions happen in conversation, not in a Jira ticket queue.</li>
+                    <li><strong>AI tools are fine.</strong> ChatGPT, Claude, Copilot, Gemini — use whatever helps you debug, scaffold, or think through a problem. We'll provide a paid plan once we're working together. The only expectation is that you stand behind every line as if you'd written it yourself.</li>
+                    <li><strong>Long-term potential.</strong> This isn't a one-off. If it works for both sides, the role can grow as the product does — beyond this build, into ongoing platform work, new platforms, and integrations.</li>
+                    <li><strong>NDA before product details.</strong> We'll send a fair, light NDA before sharing the product. It covers unreleased information and proprietary material — once the product is publicly launched, you're welcome to mention your work in your portfolio and CV like any other project. It doesn't restrict you from working with other clients in parallel or after.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply CTA -->
+    <section class="apply-cta section-dark">
+        <div class="container">
+            <div class="content">
+                <h2>To apply</h2>
+                <p>Email <a class="email-link" href="mailto:ad@holistics.presence.com">ad@holistics.presence.com</a> with:</p>
+                <ul>
+                    <li>A short note on why this resonates</li>
+                    <li>Two cross-platform apps you've shipped to both stores (App Store / Play Store links, or open-source repos)</li>
+                    <li>Your indicative milestone rate (we'll discuss together)</li>
+                    <li>Your earliest start date</li>
+                </ul>
+                <p>We're actively reviewing and will reply within a few working days.</p>
+                <a href="/" class="back-link" style="color: #f8fafc;">
+                    <i class="bi bi-arrow-left"></i> Back to Holistics
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Holistics Collective Ltd. © 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
