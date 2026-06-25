@@ -590,17 +590,18 @@
         /* Reveal only hides content when JS is present to un-hide it */
         .js .reveal { opacity: 0; transform: translateY(22px); }
 
-        /* Visible focus indicator for keyboard users */
+        /* Visible focus indicator for keyboard users only */
         a:focus-visible,
-        button:focus-visible,
-        [tabindex]:focus-visible {
+        button:focus-visible {
             outline: 2px solid var(--fg);
             outline-offset: 3px;
             border-radius: 3px;
         }
         .work :focus-visible,
         .footer :focus-visible { outline-color: var(--dark-fg); }
-        main:focus { outline: none; }
+        /* No ring for mouse/programmatic focus (e.g. clicking in-page links) or on the skip target */
+        :focus:not(:focus-visible) { outline: none; }
+        #main:focus, #main:focus-visible { outline: none; }
 
         /* Skip link */
         .skip-link {
