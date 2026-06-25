@@ -118,13 +118,24 @@
             height: 4.75rem;
         }
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-size: 1.18rem;
+            font-weight: 500;
+            letter-spacing: -0.045em;
             display: inline-flex;
-            align-items: baseline;
+            align-items: center;
+            gap: 0.3em;
+            color: var(--fg);
         }
-        .logo .dot { color: var(--accent); -webkit-text-stroke: 0; }
+        .logo .dot {
+            width: 0.32em;
+            height: 0.32em;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+            flex: none;
+            transition: transform 0.4s var(--ease);
+        }
+        .logo:hover .dot { transform: scale(1.35); }
         .nav__links {
             display: flex;
             gap: 2.1rem;
@@ -464,12 +475,28 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1rem 2rem;
             font-size: 0.82rem;
             color: var(--dark-muted);
         }
+        .footer__slug {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55em;
+            color: var(--dark-fg);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .footer__slug .dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+            flex: none;
+        }
         .footer__bottom nav { display: flex; gap: 1.5rem; }
         .footer__bottom nav a:hover { color: var(--dark-fg); }
+        .footer__legal { margin-top: 1.75rem; font-size: 0.76rem; color: var(--dark-muted); letter-spacing: 0.01em; }
 
         /* ---------- Modal ---------- */
         .modal {
@@ -640,7 +667,7 @@
     <!-- Nav -->
     <header class="nav" id="nav">
         <div class="wrap nav__inner">
-            <a href="#" class="logo" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true">.</span></a>
+            <a href="#" class="logo" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true"></span></a>
             <nav class="nav__links" aria-label="Primary">
                 <a href="#what-we-do">What we do</a>
                 <a href="#how-we-work">How we work</a>
@@ -657,7 +684,7 @@
     <!-- Mobile menu -->
     <div class="m-menu" id="mMenu">
         <div class="m-menu__top">
-            <a href="#" class="logo" onclick="toggleMenu(false)" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true">.</span></a>
+            <a href="#" class="logo" onclick="toggleMenu(false)" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true"></span></a>
             <button class="close-btn" aria-label="Close menu" onclick="toggleMenu(false)"><span aria-hidden="true">&times;</span></button>
         </div>
         <nav aria-label="Mobile">
@@ -802,7 +829,7 @@
                 <a href="mailto:hello@holistics.design" class="footer__email">hello@holistics.design <span class="arr" aria-hidden="true">&#8599;</span></a>
             </div>
             <div class="footer__bottom">
-                <p>Holistics Collective Ltd. © 2026</p>
+                <p class="footer__slug">Holistics<span class="dot" aria-hidden="true"></span> Strategic design consultancy</p>
                 <nav aria-label="Footer">
                     <a href="#what-we-do">What we do</a>
                     <a href="#how-we-work">How we work</a>
@@ -810,6 +837,7 @@
                     <!-- <a href="/careers/mobile-engineer/">Careers</a> -->
                 </nav>
             </div>
+            <p class="footer__legal">Holistics Collective Ltd. © 2026</p>
         </div>
     </footer>
 
