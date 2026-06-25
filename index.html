@@ -11,13 +11,14 @@
     <meta property="og:description" content="Empowering bold transformation through tangible experimentation, delivering inclusive outcomes.">
     <meta property="og:type" content="website">
 
+    <script>document.documentElement.classList.add('js');</script>
 
     <style>
         :root {
             --bg: #fafafa;
             --fg: #0c0c0c;
             --muted: #6f6f6f;
-            --faint: #b6b6b6;
+            --faint: #8a8a8a;
             --line: #e7e7e7;
             --dark: #0b0b0b;
             --dark-fg: #f4f4f4;
@@ -243,7 +244,7 @@
             align-items: flex-end;
             font-size: 0.74rem;
             letter-spacing: 0.04em;
-            color: var(--faint);
+            color: var(--muted);
             padding: 0 1.75rem;
         }
         .hero__notes .scroll {
@@ -385,7 +386,7 @@
             font-size: 0.72rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--faint);
+            color: var(--muted);
         }
         .card h3 {
             font-family: var(--serif);
@@ -408,6 +409,13 @@
             margin-top: 1.6rem;
             font-weight: 500;
             font-size: 0.95rem;
+            align-self: flex-start;
+            background: none;
+            border: 0;
+            padding: 0;
+            font-family: inherit;
+            color: inherit;
+            cursor: pointer;
         }
         .card .more .arr { transition: transform 0.4s var(--ease); }
         .card:hover .more .arr { transform: translateX(5px); }
@@ -473,10 +481,14 @@
             -webkit-backdrop-filter: blur(8px);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+            transition: opacity 0.4s var(--ease), visibility 0s linear 0.4s;
             overflow-y: auto;
         }
-        .modal.open { opacity: 1; visibility: visible; }
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.4s var(--ease), visibility 0s linear 0s;
+        }
         .modal__panel {
             background: var(--bg);
             min-height: 100%;
@@ -546,8 +558,8 @@
         body.lock { overflow: hidden; }
 
         /* ---------- Reveal animation ---------- */
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-        .reveal.in { opacity: 1; transform: none; }
+        .reveal { transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+        .js .reveal.in { opacity: 1; transform: none; }
         .reveal[data-d="1"] { transition-delay: 0.08s; }
         .reveal[data-d="2"] { transition-delay: 0.16s; }
         .reveal[data-d="3"] { transition-delay: 0.24s; }
@@ -570,17 +582,65 @@
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; }
-            .reveal { opacity: 1; transform: none; }
+            .reveal, .js .reveal { opacity: 1 !important; transform: none !important; }
             html { scroll-behavior: auto; }
         }
+
+        /* ---------- Accessibility ---------- */
+        /* Reveal only hides content when JS is present to un-hide it */
+        .js .reveal { opacity: 0; transform: translateY(22px); }
+
+        /* Visible focus indicator for keyboard users */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--fg);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+        .work :focus-visible,
+        .footer :focus-visible { outline-color: var(--dark-fg); }
+        main:focus { outline: none; }
+
+        /* Skip link */
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 300;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 0.7rem 1.1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateY(-150%);
+            transition: transform 0.25s var(--ease);
+        }
+        .skip-link:focus-visible { transform: translateY(0); outline-offset: 2px; }
+
+        /* Visually hidden but available to assistive tech */
+        .visually-hidden {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        [inert] { pointer-events: none; }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- Nav -->
     <header class="nav" id="nav">
         <div class="wrap nav__inner">
-            <a href="#" class="logo">Holistics<span class="dot">.</span></a>
-            <nav class="nav__links">
+            <a href="#" class="logo" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true">.</span></a>
+            <nav class="nav__links" aria-label="Primary">
                 <a href="#what-we-do">What we do</a>
                 <a href="#how-we-work">How we work</a>
                 <a href="#whats-new">What's new</a>
@@ -596,10 +656,10 @@
     <!-- Mobile menu -->
     <div class="m-menu" id="mMenu">
         <div class="m-menu__top">
-            <a href="#" class="logo" onclick="toggleMenu(false)">Holistics<span class="dot">.</span></a>
-            <button class="close-btn" aria-label="Close menu" onclick="toggleMenu(false)">&times;</button>
+            <a href="#" class="logo" onclick="toggleMenu(false)" aria-label="Holistics — home">Holistics<span class="dot" aria-hidden="true">.</span></a>
+            <button class="close-btn" aria-label="Close menu" onclick="toggleMenu(false)"><span aria-hidden="true">&times;</span></button>
         </div>
-        <nav>
+        <nav aria-label="Mobile">
             <a href="#what-we-do" onclick="toggleMenu(false)">What we do</a>
             <a href="#how-we-work" onclick="toggleMenu(false)">How we work</a>
             <a href="#whats-new" onclick="toggleMenu(false)">What's new</a>
@@ -608,20 +668,21 @@
         <a href="#contact" class="btn" onclick="toggleMenu(false)">Get in touch</a>
     </div>
 
+    <main id="main" tabindex="-1">
     <!-- Hero -->
     <section class="hero">
-        <div class="hero__dots"></div>
+        <div class="hero__dots" aria-hidden="true"></div>
         <div class="wrap">
             <div class="hero__inner">
                 <h1 class="reveal in">Empowering <strong>bold transformation</strong> through tangible experimentation, delivering <strong>inclusive outcomes</strong></h1>
                 <p class="hero__sub reveal in" data-d="1">Strategic design consultancy helping organisations deliver services that are viable, sustainable, and grounded in real user needs.</p>
                 <div class="hero__cta reveal in" data-d="2">
-                    <a href="#contact" class="btn">Let's work together <span class="arr">&rarr;</span></a>
+                    <a href="#contact" class="btn">Let's work together <span class="arr" aria-hidden="true">&rarr;</span></a>
                     <a href="#what-we-do" class="btn btn--ghost">What we do</a>
                 </div>
             </div>
         </div>
-        <div class="hero__notes">
+        <div class="hero__notes" aria-hidden="true">
             <span class="left">Strategy&nbsp;&rarr;&nbsp;Execution</span>
             <span class="scroll">scroll<span class="line"></span></span>
             <span class="right">Viable&nbsp;·&nbsp;Sustainable&nbsp;·&nbsp;Inclusive</span>
@@ -717,18 +778,19 @@
                     <span class="tag">Case study</span>
                     <h3>Visualising the future of digital government</h3>
                     <p>Turning complex strategy into tangible artefacts that helped teams plan, challenge and shape what the future of public services might look like.</p>
-                    <span class="more">Read more <span class="arr">&rarr;</span></span>
+                    <button type="button" class="more" data-modal="modal1" aria-haspopup="dialog">Read more<span class="visually-hidden"> about Visualising the future of digital government</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
                 </article>
 
                 <article class="card reveal" data-d="1" data-modal="modal3">
                     <span class="tag">Case study</span>
                     <h3>Designing for inclusion in digital identity</h3>
                     <p>Exploring new ways to make digital identity work for people without passports, documents or fixed addresses.</p>
-                    <span class="more">Read more <span class="arr">&rarr;</span></span>
+                    <button type="button" class="more" data-modal="modal3" aria-haspopup="dialog">Read more<span class="visually-hidden"> about Designing for inclusion in digital identity</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
                 </article>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer id="contact" class="footer">
@@ -736,11 +798,11 @@
             <div class="footer__cta reveal">
                 <h2>Let's work<br>together</h2>
                 <p class="footer__desc">If you have a project in mind or would like to find out more about how we can work together, get in touch with us.</p>
-                <a href="mailto:hello@holistics.design" class="footer__email">hello@holistics.design <span class="arr">&#8599;</span></a>
+                <a href="mailto:hello@holistics.design" class="footer__email">hello@holistics.design <span class="arr" aria-hidden="true">&#8599;</span></a>
             </div>
             <div class="footer__bottom">
                 <p>Holistics Collective Ltd. © 2026</p>
-                <nav>
+                <nav aria-label="Footer">
                     <a href="#what-we-do">What we do</a>
                     <a href="#how-we-work">How we work</a>
                     <a href="#whats-new">What's new</a>
@@ -751,14 +813,14 @@
     </footer>
 
     <!-- Modal 1 -->
-    <div class="modal" id="modal1" role="dialog" aria-modal="true" aria-label="Case study">
+    <div class="modal" id="modal1" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
         <div class="modal__panel">
             <div class="modal__bar">
                 <span class="label">Case study</span>
-                <button class="modal__close" onclick="closeModal()">Close <span>&times;</span></button>
+                <button class="modal__close" onclick="closeModal()">Close <span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal__body">
-                <h2>Visualising the future of digital government</h2>
+                <h2 id="modal1-title">Visualising the future of digital government</h2>
 
                 <h6>The client</h6>
                 <p>A central government programme needed to communicate a bold, long-term vision for the future of digital public services.</p>
@@ -778,14 +840,14 @@
     </div>
 
     <!-- Modal 3 -->
-    <div class="modal" id="modal3" role="dialog" aria-modal="true" aria-label="Case study">
+    <div class="modal" id="modal3" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
         <div class="modal__panel">
             <div class="modal__bar">
                 <span class="label">Case study</span>
-                <button class="modal__close" onclick="closeModal()">Close <span>&times;</span></button>
+                <button class="modal__close" onclick="closeModal()">Close <span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal__body">
-                <h2>Designing for inclusion in digital identity</h2>
+                <h2 id="modal3-title">Designing for inclusion in digital identity</h2>
 
                 <h6>The Client</h6>
                 <p>A cross-government programme responsible for developing a secure digital identity platform to support access to public services.</p>
@@ -812,13 +874,34 @@
     </div>
 
     <script>
-        // Mobile menu
-        function toggleMenu(open) {
-            document.getElementById('mMenu').classList.toggle('open', open);
-            document.body.classList.toggle('lock', open);
+        // Element to restore focus to after an overlay closes
+        let lastFocused = null;
+        const mMenu = document.getElementById('mMenu');
+
+        // Make everything except the open overlay inert (removed from tab order + AT)
+        function setBackgroundInert(on, except) {
+            ['#nav', '#main', '.footer', '#mMenu'].forEach(sel => {
+                const el = document.querySelector(sel);
+                if (el && el !== except) el.inert = on;
+            });
         }
 
-        // Nav shadow on scroll
+        // Mobile menu
+        function toggleMenu(open) {
+            mMenu.classList.toggle('open', open);
+            document.body.classList.toggle('lock', open);
+            if (open) {
+                lastFocused = document.activeElement;
+                const firstLink = mMenu.querySelector('a[href], button');
+                if (firstLink) firstLink.focus();   // move focus in first...
+                setBackgroundInert(true, mMenu);     // ...then inert the background
+            } else {
+                setBackgroundInert(false);
+                if (lastFocused) lastFocused.focus();
+            }
+        }
+
+        // Nav border on scroll
         const nav = document.getElementById('nav');
         const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
         onScroll();
@@ -826,20 +909,54 @@
 
         // Modals
         function openModal(id) {
-            document.getElementById(id).classList.add('open');
+            const m = document.getElementById(id);
+            if (!m) return;
+            lastFocused = document.activeElement;
+            m.classList.add('open');
             document.body.classList.add('lock');
+            void m.offsetHeight;              // flush so visibility:visible applies now
+            const close = m.querySelector('.modal__close');
+            if (close) close.focus();         // move focus in first...
+            setBackgroundInert(true, m);       // ...then remove the rest from tab order
         }
         function closeModal() {
-            document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+            const open = document.querySelector('.modal.open');
+            if (!open) return;
+            open.classList.remove('open');
             document.body.classList.remove('lock');
+            setBackgroundInert(false);
+            if (lastFocused && lastFocused.focus) lastFocused.focus();
         }
-        document.querySelectorAll('[data-modal]').forEach(card => {
-            card.addEventListener('click', () => openModal(card.dataset.modal));
+        document.querySelectorAll('[data-modal]').forEach(el => {
+            el.addEventListener('click', e => {
+                if (el.tagName === 'BUTTON') e.stopPropagation();
+                openModal(el.dataset.modal);
+            });
         });
+        // Close when clicking the backdrop (outside the panel)
         document.querySelectorAll('.modal').forEach(m => {
             m.addEventListener('click', e => { if (e.target === m) closeModal(); });
         });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        // Escape closes the open overlay (modal first, then menu)
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            if (document.querySelector('.modal.open')) closeModal();
+            else if (mMenu.classList.contains('open')) toggleMenu(false);
+        });
+
+        // Keep Tab focus inside the open overlay
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Tab') return;
+            const overlay = document.querySelector('.modal.open') ||
+                (mMenu.classList.contains('open') ? mMenu : null);
+            if (!overlay) return;
+            const f = overlay.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+            if (!f.length) return;
+            const first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
 
         // Reveal on scroll
         const io = new IntersectionObserver((entries) => {
