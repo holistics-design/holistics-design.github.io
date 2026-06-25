@@ -13,24 +13,28 @@
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
     <script>document.documentElement.classList.add('js');</script>
 
     <style>
         :root {
             --bg: #fafafa;
-            --fg: #0c0c0c;
-            --muted: #6f6f6f;
-            --faint: #8a8a8a;
-            --line: #e7e7e7;
-            --dark: #0b0b0b;
-            --dark-fg: #f4f4f4;
-            --dark-muted: #8d8d8d;
-            --dark-line: rgba(255,255,255,0.12);
+            --fg: #070708;
+            --muted: #4f535b;
+            --faint: #6b7079;
+            --line: #e4e6ea;
+            --dark: #070708;
+            --dark-fg: #f5f6f7;
+            --dark-muted: #a0a4ac;
+            --dark-line: rgba(255,255,255,0.14);
             --accent: #ffd100;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
             --maxw: 78rem;
-            --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --sans: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --serif: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -229,10 +233,10 @@
 
         .hero h1 {
             font-family: var(--serif);
-            font-weight: 300;
+            font-weight: 400;
             font-size: clamp(2rem, 4.7vw, 3.7rem);
-            line-height: 1.05;
-            letter-spacing: -0.025em;
+            line-height: 1.06;
+            letter-spacing: -0.022em;
             color: var(--faint);
         }
         .hero h1 strong { font-weight: 700; color: var(--fg); }
